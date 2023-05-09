@@ -1,0 +1,10 @@
+{
+  "name": "@jixun/libparakeet",
+  "version": "0.0.0",
+  "description": "libparakeet, transpiled to WASM.",
+  "main": "dist/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Jixun Wu",
+  "license": "MIT"
+}

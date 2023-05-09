@@ -1,0 +1,6 @@
+[submodule "emsdk"]
+	path = vendor/emsdk
+	url = https://github.com/emscripten-core/emsdk.git
+[submodule "libparakeet"]
+	path = vendor/libparakeet
+	url = https://github.com/parakeet-rs/libparakeet.git
