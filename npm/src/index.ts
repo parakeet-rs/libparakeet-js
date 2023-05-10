@@ -1,2 +1,2 @@
-export { default as LibParakeetInit } from './libparakeet-wasm';
+export { default as LibParakeetInit } from './libparakeet';
 export { BlobSink, createArrayBufferReader } from './utils/ArrayBufferBridge';

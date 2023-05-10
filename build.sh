@@ -16,4 +16,5 @@ cd "${OUT_DIR}"
 emcmake cmake -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" ../../
 cmake --build . -j
 
-cp build.emscripten/libparakeet-wasm.{wasm,js} ../../npm/src/
+cp -f build.emscripten/libparakeet.{wasm,js} ../../npm/src/
+cp -f build.emscripten-es6/libparakeet.mjs ../../npm/src/

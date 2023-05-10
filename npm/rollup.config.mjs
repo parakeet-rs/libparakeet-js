@@ -5,11 +5,20 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      dir: 'dist',
+      file: 'dist/index.mjs',
       format: 'esm',
     },
     external: ['module'],
-    plugins: [typescript(), copy({ assets: ['src/libparakeet-wasm.d.ts', 'src/libparakeet-wasm.wasm'] })],
+    plugins: [typescript(), copy({ assets: ['src/libparakeet.d.ts', 'src/libparakeet.wasm'] })],
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      file: 'dist/index.js',
+      format: 'cjs',
+    },
+    external: ['module'],
+    plugins: [typescript({ tsconfigOverride: { declaration: false } })],
   },
   {
     input: 'src/test.ts',
@@ -18,6 +27,6 @@ export default [
       format: 'esm',
     },
     external: ['module'],
-    plugins: [typescript()],
+    plugins: [typescript({ tsconfigOverride: { declaration: false } })],
   },
 ];

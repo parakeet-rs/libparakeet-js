@@ -1,4 +1,4 @@
-import type { LibParakeet } from '../libparakeet-wasm';
+import type { LibParakeet } from '../libparakeet';
 import { SeekDirection } from '../types/ParakeetInterface';
 
 export function createArrayBufferReader(data: ArrayBuffer, mod: LibParakeet) {
