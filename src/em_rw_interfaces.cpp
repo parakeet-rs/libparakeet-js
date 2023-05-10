@@ -30,12 +30,19 @@ struct IWriteableWrapper : public wrapper<IWriteable> {
   }
 };
 
-void read_test(IReadSeekableWrapper *readable) {
+size_t rw_test(IWriteableWrapper *dst, IReadSeekableWrapper *src) {
+  size_t total = 0;
   uint8_t *buffer = (uint8_t *)malloc(100);
-  for (auto i = 2; i < 100; i += 2) {
-    readable->Read(buffer, i);
+  while (true) {
+    auto bytes_read = src->Read(buffer, 100);
+    if (bytes_read == 0) {
+      break;
+    }
+    total += bytes_read;
+    dst->Write(buffer, bytes_read);
   }
   free(buffer);
+  return total;
 }
 
 EMSCRIPTEN_BINDINGS(EM__RW_Interfaces) {
@@ -55,5 +62,5 @@ EMSCRIPTEN_BINDINGS(EM__RW_Interfaces) {
                 allow_raw_pointers())
       .allow_subclass<IWriteableWrapper>("IWriteableWrapper");
 
-  function("read_test", &read_test, allow_raw_pointers());
+  function("rw_test", &rw_test, allow_raw_pointers());
 }

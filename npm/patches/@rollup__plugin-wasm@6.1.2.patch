@@ -1,0 +1,26 @@
+diff --git a/dist/cjs/index.js b/dist/cjs/index.js
+index 751370bede1002faf42ace82e0d02697fe0b2e2c..5b3e15e78f8e448b3b73fa6b58406bcd399801fc 100644
+--- a/dist/cjs/index.js
++++ b/dist/cjs/index.js
+@@ -45,7 +45,7 @@ const nodeDecode = `
+ buf = Buffer.from(src, 'base64')
+ `;
+ const browserFilePath = `
+-return _instantiateOrCompile(fetch(filepath), imports, true);
++return _instantiateOrCompile(fetch(new URL(filepath, import.meta.url).href), imports, true);
+ `;
+ const browserDecode = `
+ var raw = globalThis.atob(src)
+diff --git a/dist/es/index.js b/dist/es/index.js
+index d865dddd0239ff32187fe11962526a30801b28a1..31050dfb8f4ab1ab7bda2a3e575eddb26403b8ae 100644
+--- a/dist/es/index.js
++++ b/dist/es/index.js
+@@ -21,7 +21,7 @@ const nodeDecode = `
+ buf = Buffer.from(src, 'base64')
+ `;
+ const browserFilePath = `
+-return _instantiateOrCompile(fetch(filepath), imports, true);
++return _instantiateOrCompile(fetch(new URL(filepath, import.meta.url).href), imports, true);
+ `;
+ const browserDecode = `
+ var raw = globalThis.atob(src)
