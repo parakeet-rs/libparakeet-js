@@ -16,13 +16,4 @@ cd "${OUT_DIR}"
 emcmake cmake -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" ../../
 cmake --build . -j
 
-cp build.emscripten/libparakeet-wasm.wasm ../../npm/src/
-
-cat > ../../npm/src/libparakeet-wasm.mjs <<EOF
-import wasm from './libparakeet-wasm.wasm';
-
-$(sed -E '
-s/getBinaryPromise\(binaryFile\).then\(.*imports\)\}\)/wasm(imports)/;
-s/isDataURI\(binaryFile\)/1/
-' < build.emscripten/libparakeet-wasm.js)
-EOF
+cp build.emscripten/libparakeet-wasm.{wasm,js} ../../npm/src/

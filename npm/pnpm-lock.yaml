@@ -1,14 +1,6 @@
 lockfileVersion: '6.0'
 
-patchedDependencies:
-  '@rollup/plugin-wasm@6.1.2':
-    hash: 4lwpet5zihoulqonnx66ctavpu
-    path: patches/@rollup__plugin-wasm@6.1.2.patch
-
 devDependencies:
-  '@rollup/plugin-wasm':
-    specifier: ^6.1.2
-    version: 6.1.2(patch_hash=4lwpet5zihoulqonnx66ctavpu)(rollup@3.21.6)
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.59.5
     version: 5.59.5(@typescript-eslint/parser@5.59.5)(eslint@8.40.0)(typescript@5.0.4)
@@ -119,19 +111,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
-
-  /@rollup/plugin-wasm@6.1.2(patch_hash=4lwpet5zihoulqonnx66ctavpu)(rollup@3.21.6):
-    resolution: {integrity: sha512-YdrQ7zfnZ54Y+6raCev3tR1PrhQGxYKSTajGylhyP0oBacouuNo6KcNCk+pYKw9M98jxRWLFFca/udi76IDXzg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0||^3.0.0
-    peerDependenciesMeta:
-      rollup:
-        optional: true
-    dependencies:
-      rollup: 3.21.6
-    dev: true
-    patched: true
 
   /@rollup/pluginutils@4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
