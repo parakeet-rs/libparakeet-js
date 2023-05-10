@@ -1,11 +1,11 @@
 {
   "name": "@jixun/libparakeet",
-  "version": "0.0.0-exp1",
+  "version": "0.0.0-exp2",
   "description": "libparakeet, transpiled to WASM.",
   "main": "dist/index.js",
   "files": [
-    "dist/*.wasm",
-    "dist/index.js"
+    "dist",
+    "!dist/test.*"
   ],
   "repository": "github:parakeet-rs/libparakeet-js/npm",
   "scripts": {
@@ -19,7 +19,6 @@
     "printWidth": 120
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^11.1.0",
     "@rollup/plugin-wasm": "^6.1.2",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
     "@typescript-eslint/parser": "^5.59.5",
@@ -27,6 +26,8 @@
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.8",
     "rollup": "^3.21.6",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   },
   "pnpm": {
