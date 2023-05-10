@@ -7,6 +7,7 @@
     "dist/*.wasm",
     "dist/index.js"
   ],
+  "repository": "github:parakeet-rs/libparakeet-js/npm",
   "scripts": {
     "build": "rollup -c rollup.config.mjs"
   },
