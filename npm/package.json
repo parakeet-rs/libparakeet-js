@@ -1,6 +1,6 @@
 {
   "name": "@jixun/libparakeet",
-  "version": "0.0.0-exp2",
+  "version": "0.0.0-exp3",
   "description": "libparakeet, transpiled to WASM.",
   "main": "dist/index.js",
   "files": [
@@ -26,6 +26,7 @@
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.8",
     "rollup": "^3.21.6",
+    "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-typescript2": "^0.34.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"

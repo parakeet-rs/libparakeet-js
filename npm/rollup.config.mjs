@@ -1,5 +1,6 @@
 import { wasm } from '@rollup/plugin-wasm';
 import typescript from 'rollup-plugin-typescript2';
+import copy from 'rollup-plugin-copy-assets';
 
 export default [
   {
@@ -8,7 +9,7 @@ export default [
       dir: 'dist',
       format: 'esm',
     },
-    plugins: [wasm(), typescript()],
+    plugins: [wasm(), typescript(), copy({ assets: ['src/libparakeet-wasm.d.ts'] })],
   },
   {
     input: 'src/test.ts',
