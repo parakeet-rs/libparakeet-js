@@ -1,18 +1,5 @@
-diff --git a/dist/cjs/index.js b/dist/cjs/index.js
-index 751370bede1002faf42ace82e0d02697fe0b2e2c..5b3e15e78f8e448b3b73fa6b58406bcd399801fc 100644
---- a/dist/cjs/index.js
-+++ b/dist/cjs/index.js
-@@ -45,7 +45,7 @@ const nodeDecode = `
- buf = Buffer.from(src, 'base64')
- `;
- const browserFilePath = `
--return _instantiateOrCompile(fetch(filepath), imports, true);
-+return _instantiateOrCompile(fetch(new URL(filepath, import.meta.url).href), imports, true);
- `;
- const browserDecode = `
- var raw = globalThis.atob(src)
 diff --git a/dist/es/index.js b/dist/es/index.js
-index d865dddd0239ff32187fe11962526a30801b28a1..31050dfb8f4ab1ab7bda2a3e575eddb26403b8ae 100644
+index d865dddd0239ff32187fe11962526a30801b28a1..5a724cd0e6cf096c23a6579a5257013c15840c18 100644
 --- a/dist/es/index.js
 +++ b/dist/es/index.js
 @@ -21,7 +21,7 @@ const nodeDecode = `
@@ -20,7 +7,34 @@ index d865dddd0239ff32187fe11962526a30801b28a1..31050dfb8f4ab1ab7bda2a3e575eddb2
  `;
  const browserFilePath = `
 -return _instantiateOrCompile(fetch(filepath), imports, true);
-+return _instantiateOrCompile(fetch(new URL(filepath, import.meta.url).href), imports, true);
++return _instantiateOrCompile(fetch(fileuri || filepath), imports, true);
  `;
  const browserDecode = `
  var raw = globalThis.atob(src)
+@@ -57,7 +57,7 @@ ${nodeDecode}
+ `;
+ const browserModule = `
+ var buf = null
+-if (filepath) {
++if (fileuri || filepath) {
+   ${browserFilePath}
+ }
+ 
+@@ -87,7 +87,7 @@ const envModule = (env) => {
+     }
+ };
+ const getHelpersModule = (env) => `
+-function _loadWasmModule (sync, filepath, src, imports) {
++function _loadWasmModule (sync, filepath, fileuri, src, imports) {
+   function _instantiateOrCompile(source, imports, stream) {
+     var instantiateFunc = stream ? WebAssembly.instantiateStreaming : WebAssembly.instantiate;
+     var compileFunc = stream ? WebAssembly.compileStreaming : WebAssembly.compile;
+@@ -175,7 +175,7 @@ function wasm(options = {}) {
+                         mappings: ''
+                     },
+                     code: `import { _loadWasmModule } from ${JSON.stringify(HELPERS_ID)};
+-export default function(imports){return _loadWasmModule(${+isSync}, ${publicFilepath}, ${src}, imports)}`
++export default function(imports){return _loadWasmModule(${+isSync}, ${publicFilepath}, typeof require === "undefined" ? new URL(${publicFilepath}, import.meta.url).href : null, ${src}, imports)}`
+                 };
+             }
+             return null;
