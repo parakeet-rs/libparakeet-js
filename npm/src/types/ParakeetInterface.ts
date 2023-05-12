@@ -1,4 +1,4 @@
-import type { WASM_ptr } from './wasm';
+import type { WASM_ptr, PARAKEET_CRYPTO_HANDLE } from './wasm';
 
 export enum SeekDirection {
   SEEK_FILE_BEGIN = 0,
@@ -17,6 +17,8 @@ export interface WASMCInterface {
   //   __destruct: function() {
   //       this.__parent.__destruct.call(this);
   //   },
+  delete(): void;
+  isDeleted(): boolean;
 }
 
 export interface IReadSeekableImpl {
@@ -38,12 +40,15 @@ export interface IWriteableImpl {
 
 export interface WithInterfaceIReadSeekable {
   IReadSeekable: {
-    extend(name: 'IReadSeekable' | string, proto: IReadSeekableImpl): { new (): IReadSeekableImpl };
-    implement(proto: IReadSeekableImpl): IReadSeekableImpl;
+    extend(name: 'IReadSeekable' | string, proto: IReadSeekableImpl): { new (): IReadSeekableImpl & WASMCInterface };
+    implement(proto: IReadSeekableImpl): IReadSeekableImpl & WASMCInterface;
   };
 
   IWriteable: {
-    extend(name: 'IWriteable' | string, proto: IWriteableImpl): { new (): IWriteableImpl };
-    implement(proto: IWriteableImpl): IWriteableImpl;
+    extend(name: 'IWriteable' | string, proto: IWriteableImpl): { new (): IWriteableImpl & WASMCInterface };
+    implement(proto: IWriteableImpl): IWriteableImpl & WASMCInterface;
   };
+
+  transformer_get_name(handle: PARAKEET_CRYPTO_HANDLE): string;
+  transformer_transform(handle: PARAKEET_CRYPTO_HANDLE, dst: IWriteableImpl, src: IReadSeekableImpl): string;
 }

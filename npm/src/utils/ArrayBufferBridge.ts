@@ -41,6 +41,7 @@ export class BlobSink {
     this.mod.IWriteable.implement({
       Write: (buffer, len) => {
         this.data.push(new Uint8Array(this.mod.HEAPU8.slice(buffer, buffer + len)));
+        return true;
       },
     });
 

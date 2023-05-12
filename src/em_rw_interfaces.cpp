@@ -1,34 +1,11 @@
-#include <parakeet-crypto/IStream.h>
+#include "em_rw_interfaces.h"
 
 #include <cstdint>
 #include <cstdlib>
 #include <memory>
 
-#include <emscripten.h>
-#include <emscripten/bind.h>
-#include <emscripten/val.h>
-
 using namespace emscripten;
 using namespace parakeet_crypto;
-
-struct IReadSeekableWrapper : public wrapper<IReadSeekable> {
-  EMSCRIPTEN_WRAPPER(IReadSeekableWrapper);
-  size_t Read(uint8_t *buffer, size_t len) {
-    return call<size_t>("Read", (uintptr_t)buffer, len);
-  }
-  void Seek(size_t position, SeekDirection seek_dir) {
-    return call<void>("Seek", position, seek_dir);
-  }
-  size_t GetSize() { return call<size_t>("GetSize"); };
-  size_t GetOffset() { return call<size_t>("GetOffset"); };
-};
-
-struct IWriteableWrapper : public wrapper<IWriteable> {
-  EMSCRIPTEN_WRAPPER(IWriteableWrapper);
-  bool Write(const uint8_t *buffer, size_t len) {
-    return call<bool>("Write", (uintptr_t)buffer, len);
-  }
-};
 
 size_t rw_test(IWriteableWrapper *dst, IReadSeekableWrapper *src) {
   size_t total = 0;

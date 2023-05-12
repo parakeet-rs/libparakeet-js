@@ -1,6 +1,6 @@
 import LibParakeetInit, { LibParakeet } from './libparakeet';
 export { BlobSink, createArrayBufferReader } from './utils/ArrayBufferBridge';
-export { LibParakeetInit };
+export { LibParakeetInit, LibParakeet };
 
 let libParakeetPromise: Promise<LibParakeet>;
 export function loadLibParakeet() {
