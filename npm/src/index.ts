@@ -1,5 +1,5 @@
 import LibParakeetInit, { LibParakeet } from './libparakeet';
-export * from './libparakeet';
+export * from './types';
 export * as factory from './factory';
 export * as bufferHelper from './utils/bufferHelper';
 export { Transformer } from './utils/Transformer';

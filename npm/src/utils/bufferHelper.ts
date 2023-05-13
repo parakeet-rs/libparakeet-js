@@ -1,4 +1,4 @@
-import type { LibParakeet, WASM_ptr } from '../libparakeet';
+import type { LibParakeet, WASM_ptr } from '../index';
 
 export function createBufferFromString(mod: LibParakeet, str: string, maxLen?: number): WASM_ptr {
   const len = maxLen ?? mod.lengthBytesUTF8(str) + 1;
