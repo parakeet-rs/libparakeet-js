@@ -1,4 +1,4 @@
-import type { IReadSeekableImpl, IWriteableImpl, LibParakeet, PARAKEET_CRYPTO_HANDLE } from '../index';
+import type { IReadSeekableImpl, IWriteableImpl, LibParakeet, PARAKEET_CRYPTO_HANDLE, TransformResult } from '../index';
 
 export class Transformer {
   constructor(private mod: LibParakeet, private handle: PARAKEET_CRYPTO_HANDLE) {}
@@ -7,8 +7,8 @@ export class Transformer {
     return this.mod.transformer_get_name(this.handle);
   }
 
-  Transform(dst: IWriteableImpl, src: IReadSeekableImpl) {
-    this.mod.transformer_transform(this.handle, dst, src);
+  Transform(dst: IWriteableImpl, src: IReadSeekableImpl): TransformResult {
+    return this.mod.transformer_transform(this.handle, dst, src);
   }
 
   delete() {
