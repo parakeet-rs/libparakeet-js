@@ -30,4 +30,6 @@ uint16_t create_qrc(uint16_t qmc1_static_transformer_handle, std::string key1,
           reinterpret_cast<const uint8_t *>(key3.c_str())));
 }
 
-EMSCRIPTEN_BINDINGS(EM__CryptoQRC) { function("create_qrc", &create_qrc); }
+EMSCRIPTEN_BINDINGS(EM__CryptoQRC) { 
+  function("create_qrc", &create_qrc);
+}

@@ -1,6 +1,9 @@
 #!/bin/bash
 
-EMSDK_VER="3.1.37"
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# EMSDK_VER="3.1.38"
+EMSDK_VER="3.0.0"
 BUILD_TYPE="Release"
 
 # Init emsdk

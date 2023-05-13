@@ -27,7 +27,7 @@ void qmcv2_footer_parser_delete(uint16_t handle) {
   g_qmc2_footer_parser.close(handle);
 }
 
-EMSCRIPTEN_BINDINGS(EM__CryptoQRC) {
+EMSCRIPTEN_BINDINGS(EM__CryptoQMC_FooterParser) {
   function("qmcv2_footer_parser_new", &qmcv2_footer_parser_new);
   function("qmcv2_footer_parser_delete", &qmcv2_footer_parser_delete);
 }
