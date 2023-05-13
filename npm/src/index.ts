@@ -11,3 +11,7 @@ let libParakeetPromise: Promise<LibParakeet>;
 export function loadLibParakeet() {
   return (libParakeetPromise ||= LibParakeetInit());
 }
+
+export function getSDKVersion() {
+  return '__BUILD_SDK_VERSION__ (libparakeet: __BUILD_LIB_PARAKEET__)';
+}
