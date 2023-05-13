@@ -1,6 +1,11 @@
 import LibParakeetInit, { LibParakeet } from './libparakeet';
+export * from './libparakeet';
+export * as factory from './factory';
+export * as bufferHelper from './utils/bufferHelper';
+export { Transformer } from './utils/Transformer';
+export { QMCv2FooterParser } from './utils/QMCv2FooterParser';
 export { BlobSink, createArrayBufferReader } from './utils/ArrayBufferBridge';
-export { LibParakeetInit, LibParakeet };
+export { LibParakeetInit };
 
 let libParakeetPromise: Promise<LibParakeet>;
 export function loadLibParakeet() {

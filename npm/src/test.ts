@@ -58,6 +58,7 @@ async function test2(mod: LibParakeet) {
 }
 
 loadLibParakeet().then(async (mod) => {
+  (window as any).libParakeet = mod;
   await test1(mod);
   await test2(mod);
 });

@@ -8,6 +8,13 @@ export declare interface WASMExportedRuntime {
    * @type {Uint8Array}
    */
   HEAPU8: Uint8Array;
+  HEAPU16: Uint16Array;
+  HEAPU32: Uint32Array;
+  HEAPF32: Float32Array;
+  HEAPF64: Float64Array;
+  HEAP8: Int8Array;
+  HEAP16: Int16Array;
+  HEAP32: Int32Array;
 
   /**
    * Allocate a block of {@link size} bytes of memory in Emscripten HEAP
@@ -27,7 +34,7 @@ export declare interface WASMExportedRuntime {
    * @param data Data to be written inside the Emscripten HEAP.
    * @param bufferPointer Address pointer
    */
-  writeArrayToMemory(data: Uint8Array, bufferPointer: WASM_ptr): void;
+  writeArrayToMemory(data: ArrayLike<number>, bufferPointer: WASM_ptr): void;
 
   /**
    * Gets a value at a specific memory address at run-time.
@@ -49,4 +56,26 @@ export declare interface WASMExportedRuntime {
    *                       Omit to read until the null-terminator.
    */
   UTF8ToString(ptr: WASM_ptr, maxBytesToRead?: number): string;
+
+  /**
+   * Copies the given JavaScript `String` object `str` to the Emscripten HEAP at address outPtr,
+   *   null-terminated and encoded in UTF8 form.
+   * The copy will require at most `str.length*4+1` bytes of space in the HEAP.
+   *   You can use the function `lengthBytesUTF8()` to compute the exact amount of bytes (excluding the null terminator)
+   *   needed to encode the string.
+   *
+   * @param str A JavaScript `String` object.
+   * @param outPtr Pointer to data copied from str, encoded in UTF8 format and null-terminated.
+   * @param maxBytesToWrite A limit on the number of bytes that this function can at most write out.
+   *                        If the string is longer than this, the output is truncated.
+   *                        The outputted string will always be null terminated, even if truncation occurred,
+   *                        as long as `maxBytesToWrite > 0`.
+   */
+  stringToUTF8(str: string, outPtr: WASM_ptr, maxBytesToWrite: number): void;
+
+  /**
+   * Compute the exact amount of bytes (excluding the null terminator) needed to encode the string.
+   * @param str
+   */
+  lengthBytesUTF8(str: string): number;
 }

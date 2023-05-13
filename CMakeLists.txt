@@ -14,6 +14,8 @@ set(RUNTIME_METHODS_LIST
 	getValue
 	writeArrayToMemory
 	UTF8ToString
+	stringToUTF8
+	lengthBytesUTF8
 )
 list(JOIN RUNTIME_METHODS_LIST "," RUNTIME_METHODS)
 

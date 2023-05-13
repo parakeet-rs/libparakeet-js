@@ -37,8 +37,13 @@ int transformer_transform(uint16_t handle, IWriteableWrapper *dst,
   return -1;
 }
 
+void transformer_delete(uint16_t handle) {
+  g_transformer_registry.close(handle);
+}
+
 EMSCRIPTEN_BINDINGS(EM__Transformer) {
   function("transformer_get_name", &transformer_get_name);
   function("transformer_transform", &transformer_transform,
            allow_raw_pointers());
+  function("transformer_delete", &transformer_delete);
 }

@@ -1,10 +1,8 @@
+import { IWriteableImpl } from './ParakeetInterface';
+import { IReadSeekableImpl } from './ParakeetInterface';
 import type { WASM_ptr, PARAKEET_CRYPTO_HANDLE } from './wasm';
 
-export enum SeekDirection {
-  SEEK_FILE_BEGIN = 0,
-  SEEK_CURRENT_POSITION = 1,
-  SEEK_FILE_END = 2,
-}
+export * from './c-interfaces/ReaderWriter';
 
 export interface WASMCInterface {
   __parent: WASMCInterface;
@@ -21,34 +19,12 @@ export interface WASMCInterface {
   isDeleted(): boolean;
 }
 
-export interface IReadSeekableImpl {
-  Read(this: IReadSeekableImpl, buffer: WASM_ptr, len: number): number;
-
-  /**
-   * @param position
-   * @param seek_dir
-   */
-  Seek(this: IReadSeekableImpl, position: number, seek_dir: SeekDirection): void;
-
-  GetSize(this: IReadSeekableImpl): number;
-  GetOffset(this: IReadSeekableImpl): number;
+export interface ExtendableCInterface<NAME, T> {
+  extend(name: NAME | string, proto: T): { new (): T & WASMCInterface };
+  implement(proto: T): T & WASMCInterface;
 }
 
-export interface IWriteableImpl {
-  Write(this: IWriteableImpl, buffer: WASM_ptr, len: number): void;
-}
-
-export interface WithInterfaceIReadSeekable {
-  IReadSeekable: {
-    extend(name: 'IReadSeekable' | string, proto: IReadSeekableImpl): { new (): IReadSeekableImpl & WASMCInterface };
-    implement(proto: IReadSeekableImpl): IReadSeekableImpl & WASMCInterface;
-  };
-
-  IWriteable: {
-    extend(name: 'IWriteable' | string, proto: IWriteableImpl): { new (): IWriteableImpl & WASMCInterface };
-    implement(proto: IWriteableImpl): IWriteableImpl & WASMCInterface;
-  };
-
-  transformer_get_name(handle: PARAKEET_CRYPTO_HANDLE): string;
-  transformer_transform(handle: PARAKEET_CRYPTO_HANDLE, dst: IWriteableImpl, src: IReadSeekableImpl): string;
+export interface WithExportedPureInterfaces {
+  IReadSeekable: ExtendableCInterface<'IReadSeekable', IReadSeekableImpl>;
+  IWriteable: ExtendableCInterface<'IWriteable', IWriteableImpl>;
 }
