@@ -3,3 +3,5 @@ dist/
 build/
 build.emscripten/
 node_modules/
+config.local/*
+!config.local/README.MD
