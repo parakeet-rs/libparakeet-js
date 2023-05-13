@@ -11,7 +11,7 @@
   "repository": "github:parakeet-rs/libparakeet-js/npm",
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
-    "prepare": "pnpm build"
+    "prepack": "pnpm build"
   },
   "keywords": [],
   "author": "Jixun Wu",
