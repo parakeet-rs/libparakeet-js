@@ -1,6 +1,6 @@
 {
   "name": "@jixun/libparakeet",
-  "version": "0.0.0-exp.9",
+  "version": "0.0.0-exp.10",
   "description": "libparakeet, transpiled to WASM.",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -10,7 +10,8 @@
   ],
   "repository": "github:parakeet-rs/libparakeet-js/npm",
   "scripts": {
-    "build": "rollup -c rollup.config.mjs"
+    "build": "rollup -c rollup.config.mjs",
+    "prepare": "pnpm build"
   },
   "keywords": [],
   "author": "Jixun Wu",
