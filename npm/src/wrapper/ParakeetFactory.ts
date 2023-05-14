@@ -3,9 +3,18 @@ import type { LibParakeet } from '../libparakeet';
 import { withBuffer } from '../utils/bufferHelper';
 import { Transformer } from '../utils/Transformer';
 import { QMCv2FooterParser } from '../utils/QMCv2FooterParser';
+import { BlobSink, createArrayBufferReader } from '../utils/ArrayBufferBridge';
 
 export class ParakeetFactory {
   constructor(public readonly mod: LibParakeet) {}
+
+  WriterSink() {
+    return new BlobSink(this.mod);
+  }
+
+  Reader(data: ArrayBuffer) {
+    return createArrayBufferReader(data, this.mod);
+  }
 
   QMCv1(key: ArrayBuffer | ArrayLike<number>) {
     return withBuffer(this.mod, key, (ptr, len) => new Transformer(this.mod, this.mod.create_qmc_v1(ptr, len)));
