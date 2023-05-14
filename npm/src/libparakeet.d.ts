@@ -1,4 +1,5 @@
 import type { DummyTest } from './types/DummyTest';
+import type { ParakeetAudio } from './types/ParakeetAudio';
 import type { ParakeetCryptoQMC } from './types/ParakeetCryptoQMC';
 import type { ParakeetCryptoQRC } from './types/ParakeetCryptoQRC';
 import type { ParakeetCryptoTransparent } from './types/ParakeetCryptoTransparent';
@@ -13,6 +14,7 @@ export type LibParakeet = WASMExportedRuntime &
   ParakeetCryptoQRC &
   ParakeetCryptoQMC &
   ParakeetCryptoTransparent &
+  ParakeetAudio &
   TransformerAPI &
   DummyTest;
 export default function LibParakeetInit(): Promise<LibParakeet>;

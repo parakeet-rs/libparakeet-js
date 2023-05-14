@@ -1,4 +1,5 @@
 import LibParakeetInit, { LibParakeet } from './libparakeet';
+import { Parakeet } from './wrapper/Parakeet';
 export * from './types';
 export * as factory from './factory';
 export * as bufferHelper from './utils/bufferHelper';
@@ -10,6 +11,10 @@ export { LibParakeetInit };
 let libParakeetPromise: Promise<LibParakeet>;
 export function loadLibParakeet() {
   return (libParakeetPromise ||= LibParakeetInit());
+}
+
+export async function fetchParakeet(mod: LibParakeet): Promise<Parakeet> {
+  return new Parakeet(mod ?? (await loadLibParakeet()));
 }
 
 export function getSDKVersion() {

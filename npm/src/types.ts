@@ -4,5 +4,6 @@ export * from './types/ParakeetCryptoQRC';
 export * from './types/ParakeetCryptoTransparent';
 export * from './types/ParakeetInterface';
 export * from './types/ParakeetTransformers';
+export * from './types/ParakeetAudio';
 export * from './types/wasm';
 export * from './types/ParakeetQMCFooterParser';
