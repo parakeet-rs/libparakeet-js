@@ -4,6 +4,7 @@ project(libparakeet-wasm)
 set(PARAKEET_CRYPTO_BUILD_TESTING OFF CACHE BOOL "no tests")
 set(PARAKEET_CRYPTO_BUILD_EXAMPLES OFF CACHE BOOL "no examples")
 add_subdirectory(./vendor/libparakeet EXCLUDE_FROM_ALL)
+add_subdirectory(./vendor/libparakeet-audio EXCLUDE_FROM_ALL)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
