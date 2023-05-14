@@ -10,12 +10,14 @@ import * as path from 'node:path';
 
 const gitRoot = url.fileURLToPath(new URL('..', import.meta.url));
 
-function system(cmd, dir = '') {
+function command(cmd, dir = '') {
   return cp.execSync(cmd, { cwd: path.join(gitRoot, dir), encoding: 'utf-8' }).trim();
 }
 
-const shortCommit = system('git describe --long --dirty --tags --always');
-const libParakeetVer = system('git describe --long --dirty --tags --always', 'vendor/libparakeet');
+const COMMAND_GIT_VERSION = 'git describe --long --dirty --tags --always';
+const shortCommit = command(COMMAND_GIT_VERSION);
+const libParakeetCryptoVer = command(COMMAND_GIT_VERSION, 'vendor/libparakeet');
+const libParakeetAudioVer = command(COMMAND_GIT_VERSION, 'vendor/libparakeet-audio');
 
 function commonPlugins() {
   return [
@@ -23,7 +25,8 @@ function commonPlugins() {
       preventAssignment: true,
       values: {
         __BUILD_SDK_VERSION__: shortCommit,
-        __BUILD_LIB_PARAKEET__: libParakeetVer,
+        __BUILD_LIB_PARAKEET_CRYPTO__: libParakeetCryptoVer,
+        __BUILD_LIB_PARAKEET_AUDIO__: libParakeetAudioVer,
       },
     }),
   ];

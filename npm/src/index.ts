@@ -13,5 +13,7 @@ export function loadLibParakeet() {
 }
 
 export function getSDKVersion() {
-  return '__BUILD_SDK_VERSION__ (libparakeet: __BUILD_LIB_PARAKEET__)';
+  const libParakeetCryptoVersion = 'libparakeet: __BUILD_LIB_PARAKEET_CRYPTO__';
+  const libParakeetAudioVersion = 'libparakeet-audio: __BUILD_LIB_PARAKEET_AUDIO__';
+  return `__BUILD_SDK_VERSION__ (${libParakeetCryptoVersion}, ${libParakeetAudioVersion})`;
 }
