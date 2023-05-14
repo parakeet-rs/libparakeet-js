@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "path": "./npm"
+        }
+    ],
+    "settings": {
+        "clangd.arguments": [
+            "-background-index",
+            "-compile-commands-dir=${workspaceFolder}/out/em-Release"
+        ]
+    }
+}
