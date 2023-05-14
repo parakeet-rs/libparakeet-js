@@ -45,7 +45,7 @@ export default [
     external: ['module'],
     plugins: [
       ...commonPlugins(),
-      typescript({ tsconfigOverride: { ...tsBuildOptions, declaration: true } }),
+      typescript({ tsconfigOverride: { compilerOptions: { ...tsBuildOptions, declaration: true } } }),
       copy({ assets: ['src/libparakeet.d.ts', 'src/libparakeet.wasm'] }),
     ],
   },
@@ -56,7 +56,7 @@ export default [
       format: 'cjs',
     },
     external: ['module'],
-    plugins: [...commonPlugins(), typescript({ tsconfigOverride: tsBuildOptions })],
+    plugins: [...commonPlugins(), typescript({ tsconfigOverride: { compilerOptions: { ...tsBuildOptions } } })],
   },
   {
     input: 'src/test.ts',
@@ -65,6 +65,6 @@ export default [
       format: 'esm',
     },
     external: ['module'],
-    plugins: [...commonPlugins(), typescript({ tsconfigOverride: tsBuildOptions })],
+    plugins: [...commonPlugins(), typescript({ tsconfigOverride: { compilerOptions: { ...tsBuildOptions } } })],
   },
 ];
