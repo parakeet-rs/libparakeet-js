@@ -6,6 +6,9 @@ export * as bufferHelper from './utils/bufferHelper';
 export { Transformer } from './utils/Transformer';
 export { QMCv2FooterParser } from './utils/QMCv2FooterParser';
 export { BlobSink, createArrayBufferReader } from './utils/ArrayBufferBridge';
+export { Parakeet } from './wrapper/Parakeet';
+export { ParakeetFactory } from './wrapper/ParakeetFactory';
+
 export { LibParakeetInit };
 
 let libParakeetPromise: Promise<LibParakeet>;
