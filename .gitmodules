@@ -4,3 +4,6 @@
 [submodule "libparakeet"]
 	path = vendor/libparakeet
 	url = https://github.com/parakeet-rs/libparakeet.git
+[submodule "vendor/libparakeet-audio"]
+	path = vendor/libparakeet-audio
+	url = https://github.com/parakeet-rs/libparakeet-audio.git
