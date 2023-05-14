@@ -1,6 +1,8 @@
-import { PARAKEET_CRYPTO_HANDLE, QMCv2FooterParser, Transformer } from '../index';
+import { PARAKEET_CRYPTO_HANDLE } from '../types';
 import type { LibParakeet } from '../libparakeet';
 import { withBuffer } from '../utils/bufferHelper';
+import { Transformer } from '../utils/Transformer';
+import { QMCv2FooterParser } from '../utils/QMCv2FooterParser';
 
 export class ParakeetFactory {
   constructor(public readonly mod: LibParakeet) {}

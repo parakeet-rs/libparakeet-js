@@ -13,7 +13,7 @@ export function loadLibParakeet() {
   return (libParakeetPromise ||= LibParakeetInit());
 }
 
-export async function fetchParakeet(mod: LibParakeet): Promise<Parakeet> {
+export async function fetchParakeet(mod?: LibParakeet): Promise<Parakeet> {
   return new Parakeet(mod ?? (await loadLibParakeet()));
 }
 

@@ -11,6 +11,7 @@
   "repository": "github:parakeet-rs/libparakeet-js/npm",
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
+    "test": "ava",
     "prepack": "pnpm build"
   },
   "keywords": [],
@@ -20,16 +21,30 @@
     "singleQuote": true,
     "printWidth": 120
   },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register/transpile-only"
+    ],
+    "files": [
+      "src/**/*.test.ts"
+    ]
+  },
   "devDependencies": {
     "@rollup/plugin-replace": "^5.0.2",
+    "@types/node": "^20.1.4",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
     "@typescript-eslint/parser": "^5.59.5",
+    "ava": "^5.2.0",
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "prettier": "^2.8.8",
     "rollup": "^3.21.6",
     "rollup-plugin-copy-assets": "^2.0.3",
     "rollup-plugin-typescript2": "^0.34.1",
+    "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   }

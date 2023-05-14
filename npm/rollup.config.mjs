@@ -7,6 +7,9 @@ import replace from '@rollup/plugin-replace';
 import cp from 'node:child_process';
 import * as url from 'node:url';
 import * as path from 'node:path';
+const tsBuildOptions = {
+  module: 'ES2020',
+};
 
 const gitRoot = url.fileURLToPath(new URL('..', import.meta.url));
 
@@ -40,7 +43,11 @@ export default [
       format: 'esm',
     },
     external: ['module'],
-    plugins: [...commonPlugins(), typescript(), copy({ assets: ['src/libparakeet.d.ts', 'src/libparakeet.wasm'] })],
+    plugins: [
+      ...commonPlugins(),
+      typescript({ tsconfigOverride: { ...tsBuildOptions, declaration: true } }),
+      copy({ assets: ['src/libparakeet.d.ts', 'src/libparakeet.wasm'] }),
+    ],
   },
   {
     input: 'src/index.ts',
@@ -49,7 +56,7 @@ export default [
       format: 'cjs',
     },
     external: ['module'],
-    plugins: [...commonPlugins(), typescript({ tsconfigOverride: { declaration: false } })],
+    plugins: [...commonPlugins(), typescript({ tsconfigOverride: tsBuildOptions })],
   },
   {
     input: 'src/test.ts',
@@ -58,6 +65,6 @@ export default [
       format: 'esm',
     },
     external: ['module'],
-    plugins: [...commonPlugins(), typescript({ tsconfigOverride: { declaration: false } })],
+    plugins: [...commonPlugins(), typescript({ tsconfigOverride: tsBuildOptions })],
   },
 ];
