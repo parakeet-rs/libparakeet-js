@@ -2,8 +2,7 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-# EMSDK_VER="3.1.38"
-EMSDK_VER="3.0.0"
+EMSDK_VER="3.1.20"
 BUILD_TYPE="Release"
 PARALLEL_BUILD="$(nproc)"
 BUILD_VERBOSE=0
