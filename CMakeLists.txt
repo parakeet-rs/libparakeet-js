@@ -40,7 +40,7 @@ list(JOIN EMSCRIPTEN_FLAGS " " EMSCRIPTEN_FLAGS_STR)
 list(JOIN EMSCRIPTEN_FLAGS_ES6 " " EMSCRIPTEN_FLAGS_ES6_STR)
 
 add_executable(libparakeet-cjs ${CORE_SRC} ${CORE_HDR})
-target_link_libraries(libparakeet-cjs PRIVATE parakeet::crypto)
+target_link_libraries(libparakeet-cjs PRIVATE parakeet::audio parakeet::crypto)
 target_compile_features(libparakeet-cjs PRIVATE cxx_std_17)
 set_target_properties(libparakeet-cjs PROPERTIES
 	OUTPUT_NAME "libparakeet"
@@ -49,7 +49,7 @@ set_target_properties(libparakeet-cjs PROPERTIES
 )
 
 add_executable(libparakeet-es6 ${CORE_SRC} ${CORE_HDR})
-target_link_libraries(libparakeet-es6 PRIVATE parakeet::crypto)
+target_link_libraries(libparakeet-es6 PRIVATE parakeet::audio parakeet::crypto)
 target_compile_features(libparakeet-es6 PRIVATE cxx_std_17)
 set_target_properties(libparakeet-es6 PROPERTIES
 	OUTPUT_NAME "libparakeet"
