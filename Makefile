@@ -1,4 +1,5 @@
-.PHONY: clean build build-wasm build-npm
+.ONESHELL:
+.PHONY: all clean build build-wasm build-npm
 
 clean:
 	git -dxf -e config.local
@@ -7,7 +8,11 @@ clean:
 build-wasm:
 	./build.sh
 
-build-npm:
-	cd npm && pnpm build
+build-npm: build-wasm
+	cd npm 
+	[ -e node_modules ] || pnpm i --frozen-lockfile
+	pnpm build
 
 build: build-wasm build-npm
+
+all: build

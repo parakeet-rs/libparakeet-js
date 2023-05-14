@@ -3,6 +3,9 @@ project(libparakeet-wasm)
 
 set(PARAKEET_CRYPTO_BUILD_TESTING OFF CACHE BOOL "no tests")
 set(PARAKEET_CRYPTO_BUILD_EXAMPLES OFF CACHE BOOL "no examples")
+set(PARAKEET_AUDIO_RUN_CLANG_TIDY OFF CACHE BOOL "don't run clang-tidy - is broken")
+set(PARAKEET_AUDIO_BUILD_TESTING  OFF CACHE BOOL "no tests")
+
 add_subdirectory(./vendor/libparakeet EXCLUDE_FROM_ALL)
 add_subdirectory(./vendor/libparakeet-audio EXCLUDE_FROM_ALL)
 

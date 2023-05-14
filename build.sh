@@ -5,7 +5,8 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 # EMSDK_VER="3.1.38"
 EMSDK_VER="3.0.0"
 BUILD_TYPE="Release"
-PARALLEL_BUILD=$(nproc)
+PARALLEL_BUILD="$(nproc)"
+BUILD_VERBOSE=0
 
 LOCAL_CONFIG="config.local/${HOSTNAME}.sh"
 
@@ -30,6 +31,10 @@ while [[ $# -gt 0 ]]; do
         PARALLEL_BUILD="$2"
         shift
         ;;
+
+    -v | --verbose) BUILD_VERBOSE=1 ;;
+    --no-verbose) BUILD_VERBOSE=0 ;;
+
     *)
         echo "Unknown flag: $1"
         exit 1
@@ -38,10 +43,16 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
+CMAKE_BUILD_FLAGS=()
+if [[ "$BUILD_VERBOSE" == "1" ]]; then
+    CMAKE_BUILD_FLAGS+=("--verbose")
+fi
+
 echo "---------------------------------"
 echo "BUILD_TYPE: ${BUILD_TYPE}"
 echo "EMSDK_VER: ${EMSDK_VER}"
 echo "PARALLEL_BUILD: ${PARALLEL_BUILD}"
+echo "CMAKE_BUILD_FLAGS: ${CMAKE_BUILD_FLAGS[@]}"
 echo "---------------------------------"
 
 # Init emsdk
@@ -54,7 +65,7 @@ OUT_DIR="out/em-${BUILD_TYPE}"
 mkdir -p "${OUT_DIR}"
 cd "${OUT_DIR}"
 emcmake cmake -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" ../../
-cmake --build . -j "${PARALLEL_BUILD}"
+cmake --build . -j "${PARALLEL_BUILD}" "${CMAKE_BUILD_FLAGS[@]}"
 
 cp -f build.emscripten/libparakeet.{wasm,js} ../../npm/src/
 cp -f build.emscripten-es6/libparakeet.mjs ../../npm/src/

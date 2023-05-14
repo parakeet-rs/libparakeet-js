@@ -11,7 +11,6 @@
 #include <vector>
 
 using namespace emscripten;
-using namespace parakeet_crypto;
 
 std::string detect_audio_type(uintptr_t buffer, size_t len) {
     return std::string(parakeet_audio::DetectAudioExtension(reinterpret_cast<const uint8_t*>(buffer), len));
