@@ -11,7 +11,7 @@ build-wasm:
 build-npm: build-wasm
 	cd npm 
 	[ -e node_modules ] || pnpm i --frozen-lockfile
-	pnpm build
+	pnpm pack
 
 build: build-wasm build-npm
 
