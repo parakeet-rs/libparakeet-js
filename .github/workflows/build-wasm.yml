@@ -23,8 +23,12 @@ jobs:
       with:
         path: out/em-Release/_deps
         key: ${{ runner.os }}-build-deps
-    - name: install pnpm
-      run: corepack prepare pnpm@8.5.0 --activate
+    - uses: pnpm/action-setup@v2
+      name: Install pnpm
+      id: pnpm-install
+      with:
+        version: 8.5.0
+        run_install: false
     - name: make
       run: make all
     - name: Upload artifact
