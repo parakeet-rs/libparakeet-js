@@ -12,7 +12,7 @@ uint16_t qmcv2_footer_parser_new(uint8_t seed, std::string enc_v2_key_1, std::st
 {
     return g_qmc2_footer_parser.add(
         qmc2::CreateQMC2FooterParser(seed, reinterpret_cast<const uint8_t *>(enc_v2_key_1.c_str()),
-                                     reinterpret_cast<const uint8_t *>(enc_v2_key_1.c_str())));
+                                     reinterpret_cast<const uint8_t *>(enc_v2_key_2.c_str())));
 }
 
 void qmcv2_footer_parser_delete(uint16_t handle)
