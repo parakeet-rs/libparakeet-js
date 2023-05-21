@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 EMSDK_VER="3.1.20"
