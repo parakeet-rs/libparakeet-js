@@ -36,4 +36,15 @@ export class ParakeetFactory {
   QMCv2RC4(key: ArrayBuffer | ArrayLike<number>) {
     return withBuffer(this.mod, key, (ptr, len) => new Transformer(this.mod, this.mod.create_qmc_v2_rc4(ptr, len)));
   }
+
+  XimalayaAndroid(mul_init: number, mul_step: number, content_key: string) {
+    const p_scramble_table = this.mod.create_xmly_android_scramble_table(mul_init, mul_step);
+    if (!p_scramble_table) return null;
+
+    try {
+      return new Transformer(this.mod, this.mod.create_xmly_android_transformer(p_scramble_table, content_key));
+    } finally {
+      this.mod.free_xmly_key(p_scramble_table);
+    }
+  }
 }
