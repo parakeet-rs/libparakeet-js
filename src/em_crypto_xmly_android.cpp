@@ -9,7 +9,7 @@
 
 using namespace emscripten;
 
-uint16_t *create_xmly_android_scramble_table(double mul_init, double mul_step)
+uintptr_t create_xmly_android_scramble_table(double mul_init, double mul_step)
 {
     if (auto table = parakeet_crypto::xmly::CreateScrambleKey(mul_init, mul_step))
     {
@@ -17,14 +17,14 @@ uint16_t *create_xmly_android_scramble_table(double mul_init, double mul_step)
         if (auto ptr = (uint16_t *)calloc(n, sizeof(table->at(0))))
         {
             std::copy_n(table->cbegin(), n, ptr);
-            return ptr;
+            return (uintptr_t)ptr;
         }
     }
 
-    return nullptr;
+    return (uintptr_t) nullptr;
 }
 
-void free_xmly_key(uint16_t *p)
+void free_xmly_key(uintptr_t p)
 {
     if (p)
     {
@@ -32,7 +32,7 @@ void free_xmly_key(uint16_t *p)
     }
 }
 
-uint16_t create_xmly_android_transformer(uint16_t *key, std::string content_key)
+uint16_t create_xmly_android_transformer(uintptr_t key, std::string content_key)
 {
     return g_transformer_registry.add(parakeet_crypto::transformer::CreateXimalayaDecryptionTransformer(
         reinterpret_cast<const uint16_t *>(key),                //
