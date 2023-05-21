@@ -9,8 +9,8 @@ build-wasm:
 	./build.sh
 
 build-npm: build-wasm
-	cd npm 
-	[ -e node_modules ] || pnpm i --frozen-lockfile
+	cd npm
+	pnpm i --frozen-lockfile
 	pnpm pack
 
 build: build-wasm build-npm
