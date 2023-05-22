@@ -3,4 +3,9 @@
         "-background-index",
         "-compile-commands-dir=${workspaceFolder}/out/em-Release"
     ],
+    "cSpell.words": [
+        "Netease",
+        "Ximalaya",
+        "xmly"
+    ],
 }
