@@ -51,4 +51,8 @@ export class ParakeetFactory {
   NeteaseNCM(key: string) {
     return new Transformer(this.mod, this.mod.create_ncm(key));
   }
+
+  KugouKGM(slot_key_1: string, v4_slot_key_table: string, v4_file_key_table: string) {
+    return new Transformer(this.mod, this.mod.create_kgm(slot_key_1, v4_slot_key_table, v4_file_key_table));
+  }
 }
