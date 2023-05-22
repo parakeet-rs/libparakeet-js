@@ -4,6 +4,7 @@ import type { ParakeetCryptoQMC } from './types/ParakeetCryptoQMC';
 import type { ParakeetCryptoQRC } from './types/ParakeetCryptoQRC';
 import type { ParakeetCryptoTransparent } from './types/ParakeetCryptoTransparent';
 import type { ParakeetCryptoXimalayaAndroid } from './types/ParakeetCryptoXimalayaAndroid';
+import type { ParakeetCryptoNetease } from './types/ParakeetCryptoNetease';
 import type { WithExportedPureInterfaces } from './types/ParakeetInterface';
 import type { ParakeetFooterParser } from './types/ParakeetQMCFooterParser';
 import type { TransformerAPI } from './types/ParakeetTransformers';
@@ -16,6 +17,7 @@ export type LibParakeet = WASMExportedRuntime &
   ParakeetCryptoQMC &
   ParakeetCryptoTransparent &
   ParakeetCryptoXimalayaAndroid &
+  ParakeetCryptoNetease &
   ParakeetAudio &
   TransformerAPI &
   DummyTest;

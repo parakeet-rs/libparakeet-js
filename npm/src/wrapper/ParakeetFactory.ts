@@ -47,4 +47,8 @@ export class ParakeetFactory {
       this.mod.free_xmly_key(p_scramble_table);
     }
   }
+
+  NeteaseNCM(key: string) {
+    return new Transformer(this.mod, this.mod.create_ncm(key));
+  }
 }
