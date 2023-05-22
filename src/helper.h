@@ -17,3 +17,4 @@ inline std::vector<uint8_t> VecFromStr(const std::string &str)
 
 #define EM_ARG_VEC(name) uintptr_t ptr_##name, size_t len_##name
 #define EM_VEC(name) VecFromPtr(ptr_##name, len_##name)
+#define EM_VEC_PTR_LEN(name) reinterpret_cast<const uint8_t *>(ptr_##name), len_##name

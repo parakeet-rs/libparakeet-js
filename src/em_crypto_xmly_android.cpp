@@ -41,7 +41,7 @@ uint16_t create_xmly_android_transformer(uintptr_t key, std::string content_key)
         ));
 }
 
-EMSCRIPTEN_BINDINGS(EM__CryptoQMC)
+EMSCRIPTEN_BINDINGS(EM__CryptoXMLY)
 {
     function("create_xmly_android_scramble_table", &create_xmly_android_scramble_table, allow_raw_pointers());
     function("free_xmly_key", &free_xmly_key, allow_raw_pointers());
