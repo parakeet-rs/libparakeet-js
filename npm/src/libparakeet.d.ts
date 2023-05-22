@@ -11,6 +11,7 @@ import type { ParakeetCryptoTransparent } from './types/ParakeetCryptoTransparen
 import type { ParakeetCryptoXimalayaAndroid } from './types/ParakeetCryptoXimalayaAndroid';
 import type { ParakeetCryptoNetease } from './types/ParakeetCryptoNetease';
 import type { ParakeetCryptoKGM } from './types/ParakeetCryptoKGM';
+import type { ParakeetCryptoKuwo } from './types/ParakeetCryptoKuwo';
 
 export type LibParakeet = WASMExportedRuntime &
   WithExportedPureInterfaces &
@@ -21,6 +22,7 @@ export type LibParakeet = WASMExportedRuntime &
   ParakeetCryptoXimalayaAndroid &
   ParakeetCryptoNetease &
   ParakeetCryptoKGM &
+  ParakeetCryptoKuwo &
   ParakeetAudio &
   TransformerAPI &
   DummyTest;
