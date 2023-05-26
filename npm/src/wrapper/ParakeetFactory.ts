@@ -59,4 +59,10 @@ export class ParakeetFactory {
   KuwoKWM(key: string) {
     return new Transformer(this.mod, this.mod.create_kuwo(key));
   }
+
+  Migu3D(salt?: string, fileKey?: string) {
+    const keyless = typeof salt !== 'string' || typeof fileKey !== 'string';
+    const miguTransformerHandle = keyless ? this.mod.create_migu3d_keyless() : this.mod.create_migu3d(salt, fileKey);
+    return new Transformer(this.mod, miguTransformerHandle);
+  }
 }
