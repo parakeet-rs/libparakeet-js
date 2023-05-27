@@ -1,6 +1,6 @@
 {
   "name": "@jixun/libparakeet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "libparakeet, transpiled to WASM.",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
