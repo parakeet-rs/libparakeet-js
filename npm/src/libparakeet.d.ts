@@ -13,10 +13,12 @@ import type { ParakeetCryptoNetease } from './types/ParakeetCryptoNetease';
 import type { ParakeetCryptoKGM } from './types/ParakeetCryptoKGM';
 import type { ParakeetCryptoKuwo } from './types/ParakeetCryptoKuwo';
 import type { ParakeetCryptoMigu } from './types/ParakeetCryptoMigu';
+import type { ParakeetQMC2KeyCrypto } from './types/ParakeetQMCKeyCrypto';
 
 export type LibParakeet = WASMExportedRuntime &
   WithExportedPureInterfaces &
   ParakeetFooterParser &
+  ParakeetQMC2KeyCrypto &
   ParakeetCryptoQRC &
   ParakeetCryptoQMC &
   ParakeetCryptoTransparent &

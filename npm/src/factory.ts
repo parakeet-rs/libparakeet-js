@@ -4,7 +4,7 @@
  */
 
 import { LibParakeet, PARAKEET_CRYPTO_HANDLE } from './types';
-import { QMCv2FooterParser } from './utils/QMCv2FooterParser';
+import { QMCv2FooterParser } from './wrapper/QMCv2FooterParser';
 import { Transformer } from './utils/Transformer';
 import { createBuffer } from './utils/bufferHelper';
 

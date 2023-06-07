@@ -45,7 +45,5 @@ template <typename T> class TransformerRegistry
 };
 
 extern TransformerRegistry<parakeet_crypto::ITransformer> g_transformer_registry;
-
 extern TransformerRegistry<parakeet_crypto::qmc2::QMCFooterParser> g_qmc2_footer_parser;
-
-extern TransformerRegistry<parakeet_crypto::qmc2::IKeyCrypto> g_key_crypto;
+extern TransformerRegistry<parakeet_crypto::qmc2::IKeyCrypto> g_qmc2_key_crypto;

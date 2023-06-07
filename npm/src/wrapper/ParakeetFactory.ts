@@ -2,7 +2,8 @@ import { PARAKEET_CRYPTO_HANDLE } from '../types';
 import type { LibParakeet } from '../libparakeet';
 import { withBuffer } from '../utils/bufferHelper';
 import { Transformer } from '../utils/Transformer';
-import { QMCv2FooterParser } from '../utils/QMCv2FooterParser';
+import { QMCv2FooterParser } from './QMCv2FooterParser';
+import { QMCv2KeyCrypto } from './QMCv2KeyCrypto';
 import { BlobSink, createArrayBufferReader } from '../utils/ArrayBufferBridge';
 
 export class ParakeetFactory {
@@ -25,8 +26,25 @@ export class ParakeetFactory {
     return new Transformer(this.mod, this.mod.create_qmc_v2(footerParserHandle));
   }
 
+  QMCv2EKey(ekey: ArrayBuffer | ArrayLike<number>, keyCrypto: QMCv2KeyCrypto | PARAKEET_CRYPTO_HANDLE) {
+    const keyCryptoHandle = keyCrypto instanceof QMCv2KeyCrypto ? keyCrypto.handle : keyCrypto;
+    return withBuffer(this.mod, ekey, (ptr, len) => {
+      return new Transformer(this.mod, this.mod.create_qmc_v2_ekey(ptr, len, keyCryptoHandle));
+    });
+  }
+
+  QMCv2EKeyRaw(ekey: ArrayBuffer | ArrayLike<number>) {
+    return withBuffer(this.mod, ekey, (ptr, len) => {
+      return new Transformer(this.mod, this.mod.create_qmc_v2_ekey_raw(ptr, len));
+    });
+  }
+
   QMCv2FooterParser(seed: number, enc_v2_key_1: string, enc_v2_key_2: string) {
     return new QMCv2FooterParser(this.mod, seed, enc_v2_key_1, enc_v2_key_2);
+  }
+
+  QMCv2KeyCrypto(seed: number, enc_v2_key_1: string, enc_v2_key_2: string) {
+    return new QMCv2KeyCrypto(this.mod, seed, enc_v2_key_1, enc_v2_key_2);
   }
 
   QMCv2Map(key: ArrayBuffer | ArrayLike<number>) {
