@@ -78,6 +78,13 @@ export class ParakeetFactory {
     return new Transformer(this.mod, this.mod.create_kuwo(key));
   }
 
+  KuwoKWMv2(key: string, ekey: ArrayBuffer | ArrayLike<number>, keyCrypto: QMCv2KeyCrypto | PARAKEET_CRYPTO_HANDLE) {
+    const keyCryptoHandle = keyCrypto instanceof QMCv2KeyCrypto ? keyCrypto.handle : keyCrypto;
+    return withBuffer(this.mod, ekey, (ptr, len) => {
+      return new Transformer(this.mod, this.mod.create_kuwo_v2_ekey(key, ptr, len, keyCryptoHandle));
+    });
+  }
+
   Migu3D(salt?: string, fileKey?: string) {
     const keyless = typeof salt !== 'string' || typeof fileKey !== 'string';
     const miguTransformerHandle = keyless ? this.mod.create_migu3d_keyless() : this.mod.create_migu3d(salt, fileKey);
