@@ -33,9 +33,9 @@ export class ParakeetFactory {
     });
   }
 
-  QMCv2EKeyRaw(ekey: ArrayBuffer | ArrayLike<number>) {
+  QMCv2Key(ekey: ArrayBuffer | ArrayLike<number>) {
     return withBuffer(this.mod, ekey, (ptr, len) => {
-      return new Transformer(this.mod, this.mod.create_qmc_v2_ekey_raw(ptr, len));
+      return new Transformer(this.mod, this.mod.create_qmc_v2_key(ptr, len));
     });
   }
 
