@@ -1,0 +1,9 @@
+.git
+/out/
+/npm/dist/
+/npm/node_modules/
+/npm/*.tgz
+
+/vendor/emsdk/node
+/vendor/emsdk/zips
+/vendor/emsdk/upstream
