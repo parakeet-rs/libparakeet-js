@@ -4,7 +4,7 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-EMSDK_VER="3.1.39"
+EMSDK_VER="3.1.43"
 BUILD_TYPE="Release"
 PARALLEL_BUILD="$(nproc)"
 BUILD_VERBOSE=0
