@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.3] - 2023-07-17
 
+### Added
+
+- Added Kuwo v2
+
 ### Changed
 
 - Update libparakeet to v0.6.2
