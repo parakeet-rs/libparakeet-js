@@ -47,14 +47,6 @@ export class ParakeetFactory {
     return new QMCv2KeyCrypto(this.mod, seed, enc_v2_key_1, enc_v2_key_2);
   }
 
-  QMCv2Map(key: ArrayBuffer | ArrayLike<number>) {
-    return withBuffer(this.mod, key, (ptr, len) => new Transformer(this.mod, this.mod.create_qmc_v2_map(ptr, len)));
-  }
-
-  QMCv2RC4(key: ArrayBuffer | ArrayLike<number>) {
-    return withBuffer(this.mod, key, (ptr, len) => new Transformer(this.mod, this.mod.create_qmc_v2_rc4(ptr, len)));
-  }
-
   XimalayaAndroid(mul_init: number, mul_step: number, content_key: string) {
     const p_scramble_table = this.mod.create_xmly_android_scramble_table(mul_init, mul_step);
     if (!p_scramble_table) return null;
