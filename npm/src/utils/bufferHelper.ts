@@ -43,13 +43,19 @@ export function withBuffer<T>(
   }
 }
 
-export function readSizedBuffer(mod: LibParakeet, ptr: WASM_ptr, free?: (ptr: WASM_ptr) => void): Uint8Array {
+export function readSizedBuffer(mod: LibParakeet, ptr: WASM_ptr, free = true): null | Uint8Array {
+  if (ptr === 0) {
+    return null;
+  }
+
   try {
     const view = new DataView(mod.HEAPU8.buffer);
     const respLen = view.getUint32(ptr, true);
     const result = new Uint8Array(mod.HEAPU8.slice(ptr + 4, ptr + 4 + respLen));
     return result;
   } finally {
-    free?.(ptr);
+    if (free && ptr) {
+      mod._free(ptr);
+    }
   }
 }

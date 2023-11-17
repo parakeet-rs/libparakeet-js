@@ -15,6 +15,9 @@ import type { ParakeetCryptoKuwo } from './types/ParakeetCryptoKuwo';
 import type { ParakeetCryptoMigu } from './types/ParakeetCryptoMigu';
 import type { ParakeetQMC2KeyCrypto } from './types/ParakeetQMCKeyCrypto';
 
+import type { UtilsBase64 } from './types/UtilsBase64';
+import type { UtilsTcTea } from './types/UtilsTcTea';
+
 export type LibParakeet = WASMExportedRuntime &
   WithExportedPureInterfaces &
   ParakeetFooterParser &
@@ -29,5 +32,7 @@ export type LibParakeet = WASMExportedRuntime &
   ParakeetCryptoMigu &
   ParakeetAudio &
   TransformerAPI &
+  UtilsBase64 &
+  UtilsTcTea &
   DummyTest;
 export default function LibParakeetInit(): Promise<LibParakeet>;

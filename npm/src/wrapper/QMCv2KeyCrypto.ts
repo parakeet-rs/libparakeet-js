@@ -18,20 +18,14 @@ export class QMCv2KeyCrypto {
   decrypt(buffer: ArrayBuffer | ArrayLike<number>) {
     return withBuffer(this.mod, buffer, (ptr, len) => {
       const ptr_result = this.mod.qmcv2_key_crypto_decrypt(this._handle, ptr, len);
-      if (ptr_result) {
-        return readSizedBuffer(this.mod, ptr_result, this.mod.qmcv2_key_crypto_free);
-      }
-      return 0;
+      return readSizedBuffer(this.mod, ptr_result);
     });
   }
 
   encrypt(buffer: ArrayBuffer | ArrayLike<number>, version: 1 | 2 = 1) {
     return withBuffer(this.mod, buffer, (ptr, len) => {
       const ptr_result = this.mod.qmcv2_key_crypto_encrypt(this._handle, ptr, len, version);
-      if (ptr_result) {
-        return readSizedBuffer(this.mod, ptr_result, this.mod.qmcv2_key_crypto_free);
-      }
-      return null;
+      return readSizedBuffer(this.mod, ptr_result);
     });
   }
 }

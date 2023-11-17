@@ -1,4 +1,5 @@
 export type WASM_ptr = number;
+export type size_t = number;
 export type WASM_NUMBER = 'i8' | 'i16' | 'i32' | 'i64' | 'float' | 'double';
 export type PARAKEET_CRYPTO_HANDLE = number; // u16 integer
 

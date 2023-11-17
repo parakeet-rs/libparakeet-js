@@ -6,5 +6,4 @@ export interface ParakeetQMC2KeyCrypto {
 
   qmcv2_key_crypto_encrypt(handle: PARAKEET_CRYPTO_HANDLE, ptr: WASM_ptr, len: number, version: 1 | 2): WASM_ptr;
   qmcv2_key_crypto_decrypt(handle: PARAKEET_CRYPTO_HANDLE, ptr: WASM_ptr, len: number): WASM_ptr;
-  qmcv2_key_crypto_free(ptr: WASM_ptr): void;
 }
