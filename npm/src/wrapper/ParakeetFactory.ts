@@ -7,7 +7,7 @@ import { QMCv2KeyCrypto } from './QMCv2KeyCrypto';
 import { BlobSink, createArrayBufferReader } from '../utils/ArrayBufferBridge';
 
 export class ParakeetFactory {
-  constructor(public readonly mod: LibParakeet) { }
+  constructor(public readonly mod: LibParakeet) {}
 
   WriterSink() {
     return new BlobSink(this.mod);

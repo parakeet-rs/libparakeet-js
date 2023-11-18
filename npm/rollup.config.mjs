@@ -1,4 +1,5 @@
 /* eslint-env node */
+import { dts } from 'rollup-plugin-dts';
 
 import typescript from 'rollup-plugin-typescript2';
 import copy from 'rollup-plugin-copy-assets';
@@ -45,9 +46,14 @@ export default [
     external: ['module'],
     plugins: [
       ...commonPlugins(),
-      typescript({ tsconfigOverride: { compilerOptions: { ...tsBuildOptions, declaration: true } } }),
-      copy({ assets: ['src/libparakeet.d.ts', 'src/libparakeet.wasm'] }),
+      typescript({ tsconfigOverride: { compilerOptions: { ...tsBuildOptions } } }),
+      copy({ assets: ['src/libparakeet.wasm'] }),
     ],
+  },
+  {
+    input: 'src/index.ts',
+    output: [{ file: 'dist/index.d.ts', format: 'es' }],
+    plugins: [dts()],
   },
   {
     input: 'src/index.ts',
