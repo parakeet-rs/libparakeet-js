@@ -7,7 +7,7 @@ import { QMCv2KeyCrypto } from './QMCv2KeyCrypto';
 import { BlobSink, createArrayBufferReader } from '../utils/ArrayBufferBridge';
 
 export class ParakeetFactory {
-  constructor(public readonly mod: LibParakeet) {}
+  constructor(public readonly mod: LibParakeet) { }
 
   WriterSink() {
     return new BlobSink(this.mod);
@@ -15,6 +15,11 @@ export class ParakeetFactory {
 
   Reader(data: ArrayBuffer) {
     return createArrayBufferReader(data, this.mod);
+  }
+
+  QRCLyrics(qmc1: PARAKEET_CRYPTO_HANDLE | Transformer, key1: string, key2: string, key3: string) {
+    const qmc1Handle = qmc1 instanceof Transformer ? qmc1['handle'] : qmc1;
+    return new Transformer(this.mod, this.mod.create_qrc(qmc1Handle, key1, key2, key3));
   }
 
   QMCv1(key: ArrayBuffer | ArrayLike<number>) {
