@@ -9,7 +9,7 @@ export function createBufferFromString(mod: LibParakeet, str: string, maxLen?: n
 
 export function createBuffer(
   mod: LibParakeet,
-  buffer: ArrayLike<number> | ArrayBuffer
+  buffer: ArrayLike<number> | ArrayBuffer,
 ): [WASM_ptr, number, () => void] {
   if (buffer instanceof ArrayBuffer) {
     return createBuffer(mod, new Uint8Array(buffer));
@@ -24,7 +24,7 @@ export function createBuffer(
 export function withBuffer<T>(
   mod: LibParakeet,
   buffer: ArrayBuffer | ArrayLike<number>,
-  callback: (ptr: WASM_ptr, len: number) => T
+  callback: (ptr: WASM_ptr, len: number) => T,
 ): T {
   let isPromise = false;
   const [ptr, len, free] = createBuffer(mod, buffer);

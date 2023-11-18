@@ -7,6 +7,6 @@ export interface ParakeetCryptoKuwo {
     key: string,
     ekey_ptr: WASM_ptr,
     ekey_len: number,
-    key_crypto_handle: PARAKEET_CRYPTO_HANDLE
+    key_crypto_handle: PARAKEET_CRYPTO_HANDLE,
   ): PARAKEET_CRYPTO_HANDLE;
 }
