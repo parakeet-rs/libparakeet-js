@@ -12,7 +12,7 @@ import { readFileSync } from 'node:fs';
 
 const gitRoot = url.fileURLToPath(new URL('..', import.meta.url));
 const pathToLibParakeetWasm = url.fileURLToPath(new URL('src/libparakeet.wasm', import.meta.url));
-const libParakeetWasm = readFileSync(pathToLibParakeetWasm).toString('base64');
+const libParakeetWasm = readFileSync(pathToLibParakeetWasm).toString('hex');
 
 function command(cmd, dir = '') {
   return cp.execSync(cmd, { cwd: path.join(gitRoot, dir), encoding: 'utf-8' }).trim();
@@ -30,7 +30,7 @@ function replacePlugin() {
       __BUILD_SDK_VERSION__: shortCommit,
       __BUILD_LIB_PARAKEET_CRYPTO__: libParakeetCryptoVer,
       __BUILD_LIB_PARAKEET_AUDIO__: libParakeetAudioVer,
-      __BASE64_LIBPARAKEET_WASM_FILE__: libParakeetWasm,
+      __LIBPARAKEET_WASM_FILE_HEX__: libParakeetWasm,
     },
   });
 }
