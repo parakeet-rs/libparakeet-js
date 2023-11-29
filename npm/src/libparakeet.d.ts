@@ -16,6 +16,8 @@ import type { ParakeetCryptoTransparent } from './types/ParakeetCryptoTransparen
 import type { ParakeetCryptoXimalayaAndroid } from './types/ParakeetCryptoXimalayaAndroid';
 import type { ParakeetQMC2KeyCrypto } from './types/ParakeetQMCKeyCrypto';
 
+export type { QingTingDeviceInfo } from './types/ParakeetCryptoQingTingFM';
+
 import type { UtilsBase64 } from './types/UtilsBase64';
 import type { UtilsTcTea } from './types/UtilsTcTea';
 
