@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2023-11-30
+
+### Added
+
+- Support for QingTingFM (Android)
+
+### Changed
+
+- Update [libparakeet] to v0.7.0
+- Included `/inline` export to load parakeet with base64-embedded wasm data.
+
 ## [0.4.0] - 2023-11-18
 
 ### Changed
