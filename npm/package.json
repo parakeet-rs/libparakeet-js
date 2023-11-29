@@ -8,9 +8,22 @@
     "dist",
     "!dist/test.*"
   ],
+  "exports": {
+    ".": {
+      "default": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./inline": {
+      "default": "./dist/inline.mjs",
+      "require": "./dist/inline.js",
+      "types": "./dist/inline.d.ts"
+    }
+  },
   "repository": "github:parakeet-rs/libparakeet-js/npm",
   "scripts": {
-    "build": "rollup -c rollup.config.mjs",
+    "build": "node build-all.mjs",
+    "build:rollup": "rollup -c rollup.config.mjs",
     "test": "ava",
     "prepack": "pnpm test && pnpm build"
   },
