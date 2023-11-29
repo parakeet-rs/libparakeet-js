@@ -5,14 +5,15 @@ import type { ParakeetFooterParser } from './types/ParakeetQMCFooterParser';
 import type { TransformerAPI } from './types/ParakeetTransformers';
 import type { WASMExportedRuntime } from './types/wasm';
 
-import type { ParakeetCryptoQMC } from './types/ParakeetCryptoQMC';
-import type { ParakeetCryptoQRC } from './types/ParakeetCryptoQRC';
-import type { ParakeetCryptoTransparent } from './types/ParakeetCryptoTransparent';
-import type { ParakeetCryptoXimalayaAndroid } from './types/ParakeetCryptoXimalayaAndroid';
-import type { ParakeetCryptoNetease } from './types/ParakeetCryptoNetease';
 import type { ParakeetCryptoKGM } from './types/ParakeetCryptoKGM';
 import type { ParakeetCryptoKuwo } from './types/ParakeetCryptoKuwo';
 import type { ParakeetCryptoMigu } from './types/ParakeetCryptoMigu';
+import type { ParakeetCryptoNetease } from './types/ParakeetCryptoNetease';
+import type { ParakeetCryptoQMC } from './types/ParakeetCryptoQMC';
+import type { ParakeetCryptoQRC } from './types/ParakeetCryptoQRC';
+import type { ParakeetCryptoQingTingFM } from './types/ParakeetCryptoQingTingFM';
+import type { ParakeetCryptoTransparent } from './types/ParakeetCryptoTransparent';
+import type { ParakeetCryptoXimalayaAndroid } from './types/ParakeetCryptoXimalayaAndroid';
 import type { ParakeetQMC2KeyCrypto } from './types/ParakeetQMCKeyCrypto';
 
 import type { UtilsBase64 } from './types/UtilsBase64';
@@ -30,6 +31,7 @@ export type LibParakeet = WASMExportedRuntime &
   ParakeetCryptoKGM &
   ParakeetCryptoKuwo &
   ParakeetCryptoMigu &
+  ParakeetCryptoQingTingFM &
   ParakeetAudio &
   TransformerAPI &
   UtilsBase64 &
