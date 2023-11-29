@@ -35,4 +35,5 @@ export type LibParakeet = WASMExportedRuntime &
   UtilsBase64 &
   UtilsTcTea &
   DummyTest;
-export default function LibParakeetInit(): Promise<LibParakeet>;
+
+export default function LibParakeetInit(moduleArg?: Record<string, unknown>): Promise<LibParakeet>;

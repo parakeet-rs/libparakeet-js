@@ -12,12 +12,24 @@ export { ParakeetFactory } from './wrapper/ParakeetFactory';
 export { LibParakeetInit };
 
 let libParakeetPromise: Promise<LibParakeet>;
-export function loadLibParakeet() {
-  return (libParakeetPromise ||= LibParakeetInit());
+
+/**
+ * Load LibParakeet (WASM exposed APIs)
+ * @param moduleArgs Check out the WASM source for init options
+ * @returns
+ */
+export function loadLibParakeet(moduleArgs?: Record<string, unknown>) {
+  return (libParakeetPromise ||= LibParakeetInit(moduleArgs));
 }
 
-export async function fetchParakeet(mod?: LibParakeet): Promise<Parakeet> {
-  return new Parakeet(mod ?? (await loadLibParakeet()));
+/**
+ * Fetch a new Parakeet wrapper class instance.
+ * @param mod If not provided, it will be loaded from WASM
+ * @param moduleArgs Check out the WASM source for init options
+ * @returns Wrapper class of Parakeet.
+ */
+export async function fetchParakeet(mod?: LibParakeet, moduleArgs?: Record<string, unknown>): Promise<Parakeet> {
+  return new Parakeet(mod ?? (await loadLibParakeet(moduleArgs)));
 }
 
 export function getSDKVersion() {
