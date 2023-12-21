@@ -54,7 +54,7 @@ export default [
             replacePlugin(),
             typescript({
               tsconfigOverride: {
-                compilerOptions: { module: 'ES2020' },
+                compilerOptions: { module: 'ES2020', declaration: false },
               },
             }),
           ],

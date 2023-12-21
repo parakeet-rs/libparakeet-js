@@ -8,7 +8,7 @@ import { BlobSink, createArrayBufferReader } from '../utils/ArrayBufferBridge';
 import type { QingTingDeviceInfo } from '../types/ParakeetCryptoQingTingFM';
 
 export class ParakeetFactory {
-  constructor(public readonly mod: LibParakeet) {}
+  constructor(public readonly mod: LibParakeet) { }
 
   WriterSink() {
     return new BlobSink(this.mod);
@@ -89,14 +89,12 @@ export class ParakeetFactory {
     return new Transformer(this.mod, miguTransformerHandle);
   }
 
-  QingTingFM(filename: string, secret: ArrayBuffer): Transformer;
+  QingTingFM(filename: string, deviceSecret: string): Transformer;
   QingTingFM(filename: string, deviceInfo: QingTingDeviceInfo): Transformer;
 
-  QingTingFM(filename: string, secretOrDeviceInfo: ArrayBuffer | QingTingDeviceInfo) {
-    if (secretOrDeviceInfo instanceof ArrayBuffer) {
-      return withBuffer(this.mod, secretOrDeviceInfo, (ptr) => {
-        return new Transformer(this.mod, this.mod.create_qtfm_by_key(filename, ptr));
-      });
+  QingTingFM(filename: string, secretOrDeviceInfo: string | QingTingDeviceInfo) {
+    if (typeof secretOrDeviceInfo === 'string') {
+      return new Transformer(this.mod, this.mod.create_qtfm_by_key(filename, secretOrDeviceInfo));
     }
 
     const { product, device, manufacturer, brand, board, model } = secretOrDeviceInfo;

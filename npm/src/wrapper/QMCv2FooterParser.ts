@@ -1,4 +1,4 @@
-import type { IReadSeekableImpl, LibParakeet, PARAKEET_CRYPTO_HANDLE } from '../index';
+import type { LibParakeet, PARAKEET_CRYPTO_HANDLE } from '../index';
 
 export class QMCv2FooterParser {
   private _handle: PARAKEET_CRYPTO_HANDLE;
