@@ -4,7 +4,7 @@ export * from './types';
 export * as factory from './factory';
 export * as bufferHelper from './utils/bufferHelper';
 export { Transformer } from './utils/Transformer';
-export { QMCv2FooterParser } from './wrapper/QMCv2FooterParser';
+export * from './wrapper/QMCv2FooterParser';
 export { BlobSink, createArrayBufferReader } from './utils/ArrayBufferBridge';
 export { Parakeet } from './wrapper/Parakeet';
 export { ParakeetFactory } from './wrapper/ParakeetFactory';

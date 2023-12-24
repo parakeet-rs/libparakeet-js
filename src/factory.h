@@ -13,7 +13,7 @@ template <typename T> class TransformerRegistry
     inline uint16_t add(std::shared_ptr<T> transformer)
     {
         // Make it seem random, doesn't really need to be random.
-        uint16_t delta = static_cast<uint32_t>((uintptr_t)transformer.get()) >> 4;
+        uint16_t delta = static_cast<uint32_t>((uintptr_t)transformer.get()) >> 3;
         do
         {
             next_id_ += delta;
@@ -47,3 +47,4 @@ template <typename T> class TransformerRegistry
 extern TransformerRegistry<parakeet_crypto::ITransformer> g_transformer_registry;
 extern TransformerRegistry<parakeet_crypto::qmc2::QMCFooterParser> g_qmc2_footer_parser;
 extern TransformerRegistry<parakeet_crypto::qmc2::IKeyCrypto> g_qmc2_key_crypto;
+extern TransformerRegistry<parakeet_crypto::qmc2::FooterParseResult> g_qmc2_footer_result;
