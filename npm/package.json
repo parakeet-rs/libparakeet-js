@@ -1,6 +1,6 @@
 {
   "name": "@jixun/libparakeet",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "libparakeet, transpiled to WASM.",
   "module": "dist/index.mjs",
   "main": "dist/index.js",
@@ -10,12 +10,12 @@
   ],
   "exports": {
     ".": {
-      "default": "./dist/index.mjs",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./inline": {
-      "default": "./dist/inline.mjs",
+      "import": "./dist/inline.mjs",
       "require": "./dist/inline.js",
       "types": "./dist/inline.d.ts"
     }
